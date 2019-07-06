@@ -1,12 +1,12 @@
 package cmd
 
 import (
-	"os"
+	"fmt"
 	"time"
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/donbattery/test/model"
+	"github.com/donbattery/test-r/model"
 	"github.com/spf13/cobra"
 )
 
@@ -57,5 +57,6 @@ func runTest() {
 		},
 	}
 
-	model.JUnitReportXML(&rep, false, os.Stdout)
+	fmt.Printf("%#v", rep)
+	// model.JUnitReportXML(&rep, false, os.Stdout)
 }

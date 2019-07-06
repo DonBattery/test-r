@@ -59,7 +59,7 @@ type JUnitFailure struct {
 }
 
 // JUnitReportXML writes a JUnit xml representation of the given report to w
-func JUnitReportXML(report *Report, noXMLHeader bool, w io.Writer) error {
+func JUnitReportXML(report *Report, output io.Writer) error {
 	suites := JUnitTestSuites{}
 
 	// convert Report to JUnit test suites
@@ -105,12 +105,10 @@ func JUnitReportXML(report *Report, noXMLHeader bool, w io.Writer) error {
 		return err
 	}
 
-	writer := bufio.NewWriter(w)
+	// Write xml file onto the supplied output
+	writer := bufio.NewWriter(output)
 
-	if !noXMLHeader {
-		writer.WriteString(xml.Header)
-	}
-
+	writer.WriteString(xml.Header)
 	writer.Write(bytes)
 	writer.WriteByte('\n')
 	writer.Flush()

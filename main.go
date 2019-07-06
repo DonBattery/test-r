@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/donbattery/test/cmd"
+	"github.com/donbattery/test-r/cmd"
 )
 
 func main() {
